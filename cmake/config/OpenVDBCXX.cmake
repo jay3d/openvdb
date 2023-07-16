@@ -264,6 +264,7 @@ endforeach()
 #   otherwise interfere with debugging". This still massively effects branch
 #   coverage tracking compared to -O0 so we should look to improve the speed of
 #   some of the unit tests and also experiment with clang.
+#[[
 add_compile_options("$<$<AND:$<CONFIG:COVERAGE>,$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang>>:--coverage;-Og>")
 add_link_options("$<$<AND:$<CONFIG:COVERAGE>,$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang>>:--coverage>")
 
@@ -294,6 +295,7 @@ add_link_options("$<$<AND:$<CONFIG:MSAN>,$<COMPILE_LANG_AND_ID:CXX,Clang,AppleCl
 # UndefinedBehaviour
 add_compile_options("$<$<AND:$<CONFIG:UBSAN>,$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang>>:-fsanitize=undefined>")
 add_link_options("$<$<AND:$<CONFIG:UBSAN>,$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang>>:-fsanitize=undefined>")
+]]
 
 # CMAKE_BUILD_TYPE is ignored for multi config generators i.e. MSVS
 
